@@ -35,6 +35,32 @@ Response: {
     "response_code": 200
 }
 
+2. Get Invited User
+Endpoint: get /api/magic-link/user?token=68a860ac430da
+
+Response: {
+    "status": true,
+    "message": "User found",
+    "data": {
+        "user_id": 0,
+        "first_name": "Nithin",
+        "last_name": "Pankajakshan",
+        "email": "pnithin36@gmail.com",
+        "password": "",
+        "company_name": "",
+        "DOB": "",
+        "contact_number": "",
+        "is_admin": false,
+        "is_pending": false,
+        "otp": "",
+        "created_at": "",
+        "updated_at": "",
+        "remember_token": "",
+        "token": ""
+    },
+    "error": [],
+    "response_code": 200
+}
 ## Libraries/Tools used
 
 Laravel Framework: PHP web application framework for routing, ORM, migrations, and authentication.

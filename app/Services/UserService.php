@@ -2,9 +2,9 @@
 
 namespace App\Services;
 use App\Repositories\User\UserRespositoryInterface;
-use App\DTO\UserDto;
 use App\Actions\SaveUserAction;
 use App\Mapper\UserMapper;
+use App\Events\UserInvite;
 
 
 class UserService
@@ -23,10 +23,21 @@ class UserService
     public function inviteUser($data)
     {
         $userDto = $this->userMapper->mapRequestToDto($data);
+        $userDto->setToken(uniqid());
 
-        $userDto = $this->userMapper
+        $userDtoResponse = $this->userMapper
              ->mapModelToDto((new SaveUserAction($this->userRepository))
              ->execute($userDto->convertDtoToArray()));
-        return $this->userMapper->mapDtoToResponseData($userDto);
+         //dispatch event
+         event(new UserInvite($userDto));
+        return $this->userMapper->mapDtoToResponseData($userDtoResponse);
     }
+    public function getUserByToken($token)
+    {
+        $user = $this->userRepository->getUserByToken($token);
+        if ($user) {
+            return $this->userMapper->mapModelToDto($user);
+        }
+        return null;
+    }   
 }

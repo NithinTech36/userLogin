@@ -9,3 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/user/invite', [UserController::class, 'inviteUser']);
+Route::get('/magic-link/user', [UserController::class, 'getUserByToken']);

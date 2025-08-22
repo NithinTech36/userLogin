@@ -25,5 +25,9 @@ class UserRespository implements UserRespositoryInterface
         $user->update($data);
         return $user;
     }
+    public function getUserByToken($token)
+    {
+        return User::where('token', $token)->first();
+    }
 
 }

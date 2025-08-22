@@ -27,4 +27,15 @@ class UserController extends Controller
             return response()->json((new ResponseDto('User invited successfully',$responseData))->SendResponse(), 200);
         }
     }
+
+    public function getUserByToken(Request $request)
+    {
+        $token = $request->query('token');
+        $userDto = $this->userService->getUserByToken($token);
+        if ($userDto) {
+            return response()->json((new ResponseDto('User found',$userDto))->SendResponse(), 200);
+        } else {
+            return response()->json((new ResponseDto('User not found',null))->SendResponse(), 404);
+        }
+    }
 }

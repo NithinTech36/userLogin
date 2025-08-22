@@ -11,5 +11,6 @@ interface UserRespositoryInterface
     public function createUser(array $data);
 
     public function updateUser($id, array $data);
+      public function getUserByToken($token);
 
 }

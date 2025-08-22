@@ -28,6 +28,7 @@ class User extends Authenticatable
         'otp',
         'contact_number',
         'email_verified_at',
+        'token'
 
     ];
 

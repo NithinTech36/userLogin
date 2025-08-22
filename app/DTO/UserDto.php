@@ -21,6 +21,13 @@ class UserDto extends Dto
 
     public ?string $otp = '';
 
+    public ?string $created_at = '';
+    public ?string $updated_at = '';
+
+    public ?string $remember_token = '';
+
+    public ?string $token = '';
+
 
     //generate getters and setters
 
@@ -133,5 +140,35 @@ class UserDto extends Dto
     {
         $this->otp = $otp;
     }
+    public function getCreatedAt(): string
+    {
+        return $this->created_at;
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->updated_at;
+    }
+
+    public function getRememberToken(): string
+    {
+        return $this->remember_token;
+    }
+    public function setRememberToken(string $remember_token): void
+    {
+        $this->remember_token = $remember_token;
+    }
+
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+    public function setToken(string $token): void
+    {
+        $this->token = $token;
+    }
+
+
+
 }
     
